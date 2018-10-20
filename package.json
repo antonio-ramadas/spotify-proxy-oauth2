@@ -1,0 +1,31 @@
+{
+    "name": "slack",
+    "version": "0.1.0",
+    "author": "António Ramadas",
+    "license": "MIT",
+    "description": "Simple proxy server to authenticate your apps on Spotify (with OAuth2)",
+    "keywords": [
+        "slack",
+        "proxy",
+        "oauth2"
+    ],
+    "homepage": "https://github.com/antonio-ramadas/spotify-proxy-oauth2",
+    "repository": "github:antonio-ramadas/spotify-proxy-oauth2",
+    "scripts": {
+        "start": "node ./bin/www",
+        "lint": "node_modules/.bin/eslint .",
+        "postinstall": "chmod +x postinstall.sh && sh postinstall.sh"
+    },
+    "dependencies": {
+        "cookie-parser": "~1.4.3",
+        "debug": "~2.6.9",
+        "express": "~4.16.0",
+        "morgan": "~1.9.0",
+        "request": "^2.88.0"
+    },
+    "devDependencies": {
+        "eslint": "^5.6.1",
+        "eslint-config-airbnb-base": "^13.1.0",
+        "eslint-plugin-import": "^2.14.0"
+    }
+}
