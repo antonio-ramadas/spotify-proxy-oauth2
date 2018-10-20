@@ -5,7 +5,7 @@
     "license": "MIT",
     "description": "Simple proxy server to authenticate your apps on Spotify (with OAuth2)",
     "keywords": [
-        "slack",
+        "spotify",
         "proxy",
         "oauth2"
     ],

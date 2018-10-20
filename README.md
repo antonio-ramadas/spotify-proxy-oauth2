@@ -2,6 +2,8 @@
 
 # Spotify Proxy for OAuth2
 
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
+
 Dead simple proxy server to authenticate your apps on Spotify. No need to code anything. Just set environment variables and you are good to go!
 
 > If you have problems understanding what is being done here, then have a look to the [Spotify OAuth2 documentation](https://developer.spotify.com/documentation/general/guides/authorization-guide/#authorization-code-flow).

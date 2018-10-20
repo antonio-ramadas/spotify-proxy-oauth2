@@ -3,3 +3,10 @@ node_js:
 - node
 script:
 - npm run lint -s
+deploy:
+  provider: heroku
+  api_key:
+    secure: CLWK5b9jAU2NxU2jNgILiyTGz7hyT7uzuIMpCWFdievsCd5m3g9oaoodkV0/oSX3L4+TA86DtqNTFsp/qVfsyJ9EAaFGcvBdw4rJ416N9ERyBhWDbLGNPpFhYfvcYUl2i/gz4koLReGNjt+/b/p5bGnzsH1C6nbitcVQ/9e7lUMKCQ+ejueLLnEAZDsOIoy7ghtAi5t91DgCK3VQX07djop72ELJqPrXe0IdFKK5xyFpYYRFEZINjR7DPY/8GP/PDRvhl+CMIZG7ckI9cjBa3EzkHt6/Nc5cucCmukuqSZnsLZgsER2w3f4eztgvHUiWr6a1JZhSHAbvs1MMFFhd+gHKbf2Niai1yvpAaCcrdcWNO7oHAQ4JJ6H87p+UJpzteSjRXzdakfAvATEG94OMDPu0OUX3Vt/T5iJya6yQ3gDJNJT4wHCYDQqVe4YnyDZhcUwhm6DBS8XK4trAIqR4PtfWzfQUUercFts9GS33kZXRCJovwbdU+JqCZ3Jlqvl7ponXtksPE1zGkOFA8HeNZhUPFSFKusSsyRX4tyrL6dF1cufyKBGcNuLWgDmhr6ZWh5uk7gYBkV6C5VQeLa8w6VoqdId128nIOqSPNe7g39v4iHWmBaboyQ1JeU8vgKOjbErhLE4ksqUY6rloofyPdiget2cGGyoRfGc11KADTKc=
+  app: spotify-proxy-oauth2
+  on:
+    repo: antonio-ramadas/spotify-proxy-oauth2

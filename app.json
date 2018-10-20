@@ -1,0 +1,7 @@
+{
+    "name": "Spotify OAuth2 proxy",
+    "description": "Simple proxy server to authenticate your apps on Spotify (with OAuth2)",
+    "repository": "https://github.com/antonio-ramadas/spotify-proxy-oauth2",
+    "logo": "https://github.com/antonio-ramadas/spotify-proxy-oauth2/raw/master/resources/spotify-logo.png",
+    "keywords": ["spotify", "proxy", "oauth2"]
+}
