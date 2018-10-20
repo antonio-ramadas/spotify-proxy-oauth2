@@ -12,7 +12,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 app.use('/health', healthRouter);
-app.use('/oauth/authorize', authorizationRouter);
+app.use('/authorize', authorizationRouter);
 app.use('/api/oauth.access', oauthAccessRouter);
 
 module.exports = app;
