@@ -1,40 +1,39 @@
 # Update README.md to current repository
 
-# _Incomplete_ Slack Proxy for OAuth2
+# Spotify Proxy for OAuth2
 
-Dead simple proxy server to authenticate your apps on Slack. No need to code anything. Just set environment variables and you are good to go!
+Dead simple proxy server to authenticate your apps on Spotify. No need to code anything. Just set environment variables and you are good to go!
 
-> If you have problems understanding what is being done here, then have a look to the [Slack OAuth2 documentation](https://api.slack.com/docs/oauth).
+> If you have problems understanding what is being done here, then have a look to the [Spotify OAuth2 documentation](https://developer.spotify.com/documentation/general/guides/authorization-guide/#authorization-code-flow).
 
 ## Usage
 
-This server is only useful to authenticate your apps. It removes your concern to hide development secrets (like `client_secret`) from the user. This is **not** a complete API to communicate to Slack.
+This server is only useful to authenticate your apps. It removes your concern to hide development secrets (like `client_secret`) from the user.
 
 In order for the server to properly work, you need to set the following environment variables:
  - `CLIENT_ID`
  - `CLIENT_SECRET`
- - `SCOPE`
- - `TEAM`
+ - `REDIRECT_URI`
  
-These variables have the exact same meaning as in the Slack API.
+These variables have the exact same meaning as in the Spotify API. The endpoints of the API are exactly the same as the Spotify API. Think of this repo as an augmenter to your requests where it add your sensitive data in the necessary requests. Please notice that **you still need to handle the responses** as there is not any kind of treatment. **This proxy is stateless** and does not store/cache anything.
 
 ## API
 
 There are 3 routes for you to use:
- - `/oauth/authorize`
-   - `GET` endpoint which does not take any parameters.
-   - It redirects the user to `https://slack.com/oauth/authorize` with `client_id`, `scope` and `team`.
- - `/api/oauth.access`
-   - `GET` endpoint which handles a single parameter: `code`.
-   - You should set `code` to the code Slack gave you from the previous interaction. 
+ - `/authorize`
+   - `GET` endpoint which takes as optional parameters:
+     - `redirect_uri`
+     - `state`
+     - `scope`
+       - _space-separated list_
+     - `show_dialog`
+   - It redirects the user to `https://accounts.spotify.com/authorize` with the mandatory parameters and the optional ones you may have passed.
  - `/health`
    - `GET` endpoint which does not take any parameters.
    - Returns status `200` with `Alive!`.
    - Useful if Slack is down and you want to diagnostic where the problem is.
 
-> The first 2 of the routes have the same path as Slack OAuth2 API.
-
-## FAQ
+## FAQ (REVIEW!!!)
 
 ### When should I use this?
 
