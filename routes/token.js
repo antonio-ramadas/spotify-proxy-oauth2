@@ -78,7 +78,7 @@ function refreshToken(req, res) {
  */
 router.post('/', (req, res) => {
     /* eslint-disable camelcase */
-    const { grant_type } = res.body;
+    const { grant_type } = req.body;
 
     let f;
 
