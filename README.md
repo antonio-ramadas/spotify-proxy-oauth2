@@ -15,6 +15,8 @@ This server is only useful to authenticate your apps. It removes your concern to
 In order for the server to properly work, you need to set the following environment variables:
  - `CLIENT_ID`
  - `CLIENT_SECRET`
+
+Optionally, just for convenience, you can also set: 
  - `REDIRECT_URI`
  
 These variables have the exact same meaning as in the Spotify API. The endpoints of the API are exactly the same as the Spotify API. Think of this repo as an augmenter to your requests where it add your sensitive data in the necessary requests. Please notice that **you still need to handle the responses** as there is not any kind of treatment. **This proxy is stateless** and does not store/cache anything.
@@ -23,13 +25,24 @@ These variables have the exact same meaning as in the Spotify API. The endpoints
 
 There are 3 routes for you to use:
  - `/authorize`
-   - `GET` endpoint which takes as optional parameters:
-     - `redirect_uri`
-     - `state`
-     - `scope`
-       - _space-separated list_
-     - `show_dialog`
-   - It redirects the user to `https://accounts.spotify.com/authorize` with the mandatory parameters and the optional ones you may have passed.
+   - `GET` endpoint
+   - Parameters:
+     - Optional:
+       - `redirect_uri`
+       - `state`
+       - `scope`
+         - _space-separated list_
+       - `show_dialog`
+   - It redirects the user to `https://accounts.spotify.com/authorize` with the optional parameters you may have passed.
+ - `/api/token`
+   - `POST` endpoint
+   - Parameters:
+     - Mandatory:
+       - `code`
+         - The one from the previous interaction
+     - Optional:
+       - `redirect_uri`
+   - It returns the response of `https://accounts.spotify.com/api/token` with the mandatory parameters and the optional ones you may have passed.
  - `/health`
    - `GET` endpoint which does not take any parameters.
    - Returns status `200` with `Alive!`.

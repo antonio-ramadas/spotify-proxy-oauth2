@@ -8,7 +8,7 @@ function buildURL(redirectUri, state, showDialog, scope) {
     const url = new URL(`${HOST}/authorize`);
 
     /* eslint-disable func-names */
-    // The rule has been disabled so the function has the proper scope to use `this`
+    // A lambda would be nicer, but it would be lost the proper scope to use `this`
     url.addIfDefined = function (key, value) {
         if (value) {
             this.searchParams.append(key, value);
@@ -48,6 +48,7 @@ function redirectToAuthorization(req, res) {
  *  - `redirect_uri`
  *  - `state`
  *  - `scope`
+ *    - _space-separated list_
  *  - `show_dialog`
  */
 router.get('/', (req, res) => {
