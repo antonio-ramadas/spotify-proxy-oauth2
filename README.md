@@ -1,12 +1,14 @@
-# Update README.md to current repository
-
 # Spotify Proxy for OAuth2
 
 [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 
+> Looking for a Slack Proxy for OAuth2? It is in [another repository](https://github.com/antonio-ramadas/slack-proxy-oauth2).
+
 Dead simple proxy server to authenticate your apps on Spotify. No need to code anything. Just set environment variables and you are good to go!
 
 > If you have problems understanding what is being done here, then have a look to the [Spotify OAuth2 documentation](https://developer.spotify.com/documentation/general/guides/authorization-guide/#authorization-code-flow).
+
+The authorization flow implemented is _Authorization Code_. All the steps (except for the requests to the web api) are here implemented.
 
 ## Usage
 
@@ -26,33 +28,39 @@ These variables have the exact same meaning as in the Spotify API. The endpoints
 There are 3 routes for you to use:
  - `/authorize`
    - `GET` endpoint
-   - Parameters:
-     - Optional:
-       - `redirect_uri`
-       - `state`
-       - `scope`
-         - _space-separated list_
-       - `show_dialog`
+   - Optional query parameters:
+     - `redirect_uri`
+     - `state`
+     - `scope`
+       - _space-separated list_
+     - `show_dialog`
    - It redirects the user to `https://accounts.spotify.com/authorize` with the optional parameters you may have passed.
  - `/api/token`
    - `POST` endpoint
-   - Parameters:
-     - Mandatory:
+   - This endpoint changes its behaviour depending on the body parameter `grant_type`.
+   - If `grant_type == 'authorization_code'`:
+     - Mandatory body parameters:
+       - `grant_type`
        - `code`
          - The one from the previous interaction
-     - Optional:
+     - Optional body parameters:
        - `redirect_uri`
+         - Must be the same as the one used in the previous interaction
+   - If `grant_type == 'refresh_token'`:
+     - Mandatory body parameters:
+       - `grant_type`
+       - `refresh_token`
    - It returns the response of `https://accounts.spotify.com/api/token` with the mandatory parameters and the optional ones you may have passed.
  - `/health`
    - `GET` endpoint which does not take any parameters.
    - Returns status `200` with `Alive!`.
-   - Useful if Slack is down and you want to diagnostic where the problem is.
+   - Useful if Spotify is down and you want to diagnostic where the problem is.
 
-## FAQ (REVIEW!!!)
+## FAQ
 
 ### When should I use this?
 
-Your side projects and similar. Do not use for production or any more serious endeavours. For instance, `state` is not taken into account here. You will be vulnerable to attacks. This repository shines when you are prototyping.
+Your side projects and similar. If you use it in a production environment, then it is recommended you make use of the `state` parameter. This repository shines when you are prototyping.
 
 ### Why should I use this?
 
@@ -60,8 +68,6 @@ When you pick up a project and want to do cool stuff, you will stumble on some c
 
 ### How can I contribute?
 
-I made this project to support my side projects. It fulfils my requirements (I'm not using it for anything really serious), but I am open to further improvement and I see some points where it can be improved:
- - Have a `state` parameter.
- - Have a `redirect_uri` parameter.
+I made this project to support my side projects. It fulfils my requirements (I'm not using it for anything really serious), but I am open to further improvement.
 
-If you can think of anything else, please share! Even if it is just an issue!
+If you can think of anything, please share! Even if it is just an issue!

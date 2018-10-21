@@ -44,7 +44,7 @@ function redirectToAuthorization(req, res) {
 /**
  * GET /authorize
  *
- * Optional parameters:
+ * Optional query parameters:
  *  - `redirect_uri`
  *  - `state`
  *  - `scope`

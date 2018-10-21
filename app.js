@@ -3,7 +3,7 @@ const logger = require('morgan');
 
 const healthRouter = require('./routes/health');
 const authorizationRouter = require('./routes/authorization');
-const tokensRouter = require('./routes/tokens');
+const tokenRouter = require('./routes/token');
 
 const app = express();
 
@@ -13,6 +13,6 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use('/health', healthRouter);
 app.use('/authorize', authorizationRouter);
-app.use('/api/tokens', tokensRouter);
+app.use('/api/token', tokenRouter);
 
 module.exports = app;
