@@ -20,6 +20,8 @@ In order for the server to properly work, you need to set the following environm
 
 Optionally, just for convenience, you can also set: 
  - `REDIRECT_URI`
+ - `SCOPE`
+   - _space-separated list_
  
 These variables have the exact same meaning as in the Spotify API. The endpoints of the API are exactly the same as the Spotify API. Think of this repo as an augmenter to your requests where it add your sensitive data in the necessary requests. Please notice that **you still need to handle the responses** as there is not any kind of treatment. **This proxy is stateless** and does not store/cache anything.
 
